@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+h1 {
+  color: #256BB0;
+  font-family: Helvetica, serif;
+  font-size: 250%;
+  margin-left: 50px;
+}
+
+.class {
+  margin-left: 50px;
+}

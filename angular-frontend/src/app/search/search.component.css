@@ -1,0 +1,30 @@
+form.topButton button{
+    float: center;
+    width: 15%;
+    padding: 10px;
+    background: #256BB0;
+    color: white;
+    font-size: 18px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    border-radius: 6px;
+    margin-left: 50px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.dropDown select{
+    background: #EDEDED;
+    font-size: 12px;
+
+}
+
+.dropDown {
+    /* fix the margins here, they aren't organized / up to standard */
+    display: inline-block;
+    margin-inline-start: 50px;
+    margin-inline-end: 50px;
+    width: 10%
+}
+
