@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { result } from '../models/result';
 
 @Component({
   selector: 'app-view-result',
