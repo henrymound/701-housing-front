@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { result } from '../models/result';
+import { Room } from '../room';
 
 @Component({
   selector: 'app-view-result',
