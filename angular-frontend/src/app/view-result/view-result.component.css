@@ -1,3 +1,40 @@
 table {
   margin-left: 50px;
 }
+
+h5 { /*Reserved for table data headers (ie 'Capacity')*/
+  color: black;
+  font-family: 'Bembo';
+  font-size: 177%;
+  margin-left: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+ul{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+li{
+  margin-left: 50px;
+}
+
+a { /*Reserved for table data values (ie '4 People')*/
+  color: #003F84;
+  font-family: 'Bembo';
+  font-size: 147%;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+a:hover {
+  background-color: #bdddff;
+}
