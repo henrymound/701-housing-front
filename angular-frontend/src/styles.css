@@ -17,6 +17,15 @@ h2 {
   font-family: 'Bembo';
   font-size: 277%;
   margin-left: 50px;
+  margin-bottom: 0px;
+}
+
+h4 {
+  color: black;
+  font-family: 'Bembo';
+  font-size: 177%;
+  margin-top: 0px;
+  margin-left: 50px;
 }
 
 
