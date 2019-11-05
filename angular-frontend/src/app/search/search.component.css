@@ -28,3 +28,12 @@ form.topButton button{
     width: 10%
 }
 
+.ammenityGroup {
+    margin-inline-start: 50px;
+    margin-top: 20px;
+}
+
+.example {
+    margin-inline-start: 50px;
+    margin-top: 20px;
+}
