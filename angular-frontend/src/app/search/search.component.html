@@ -3,46 +3,68 @@
 </form>
 
 <div class="dropDown"> 
-    <label for="buildingSelect">Building Type</label>
+    <label for="buildingSelect">Building Type:</label>
     <select id="inputForm" [(ngModel)]="modelResult.bType">
-        <option></option>
+        <option value="">Anything!?!?!?</option>
         <option *ngFor="let build of buildingTypeList" [value]="build">{{build}}</option>
     </select>
 </div>
 
 
 <div class="dropDown">
-    <label for="commonsSelect">Commons</label>
-    <select id="inputForm" [(ngModel)]="modelResult.cType">
-            <!--for some reason this doesn't show up when you add [(ngModel)]
-            <option disabled selected value> -- select an option -- </option> -->
-            <option></option>
-            <option *ngFor="let house of commonsList" [value]="house">{{house}}</option>
+    <label for="capSelect">Capacity:</label>
+    <select id="inputForm" [(ngModel)]="modelResult.occupancy">
+            <option value=null>Any Capacity</option>
+            <option value="1">1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=8>8</option>
+            <!--<option *ngFor="let number of [1,2,3,4,5,6,8]" value=number>{{number}}</option> -->
     </select>
 </div>
 
 <div class="dropDown">
-    <label for="yearSelect">Year</label>
+    <label for="yearSelect">Year:</label>
     <select id="inputForm" [(ngModel)]="modelResult.year">
-            <option></option>
+            <option value="">LITERALLY AnYthing</option>
             <option *ngFor="let schoolyear of schoolyearList" [value]="schoolyear">{{schoolyear}}</option>
     </select>
 </div>
 
-<div class="ammenityGroup"><p>Ammenities:</p>
-    <label><input [(ngModel)]="modelResult.ammenities[0]" type="checkbox" [value]="kitchen" />Kitchen</label>
-    <label><input [(ngModel)]="modelResult.ammenities[1]" type="checkbox" name="ammenityList[]" value="laundry" />Laundry</label>
-    <label><input [(ngModel)]="modelResult.ammenities[2]" type="checkbox" name="ammenityList[]" value="common-area" />Common Area</label>
-    <label><input [(ngModel)]="modelResult.ammenities[3]" type="checkbox" name="ammenityList[]" value="elevator" />Elevator</label>
-    <label><input [(ngModel)]="modelResult.ammenities[4]" type="checkbox" name="ammenityList[]" value="lawn" />Lawn</label>
-    <label><input [(ngModel)]="modelResult.ammenities[5]" type="checkbox" name="ammenityList[]" value="portch" />Portch</label>
+<!--
+<div class="form form-inline">
+    <div *ngFor="let ammen of ammenityList" class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="ammen.checked" [value]="ammen.value"> {{ammen.name}}
+        </label>
+    </div>
 </div>
-
-<!-- probably can delete this class after presentation-->
+-->
+<p style="margin-left: 50px;">Ammenities:</p>
+<div *ngFor='let ammen of ammenityList; let i = index' class="ammenityGroup">
+    <label><input [(ngModel)]="modelResult.ammenities[i]" type="checkbox" [value]="ammen.value" />{{ammen.name}}</label>
+</div>
+<!--
+<div class="ammenityGroup"><p>Ammenities:</p>
+    <label><input [(ngModel)]="modelResult.ammenities[0]" type="checkbox" value="kitchen" />Kitchen</label>
+    <label><input [(ngModel)]="modelResult.ammenities[1]" type="checkbox" value="laundry" />Laundry</label>
+    <label><input [(ngModel)]="modelResult.ammenities[2]" type="checkbox" value="common-area" />Common Area</label>
+    <label><input [(ngModel)]="modelResult.ammenities[3]" type="checkbox" value="elevator" />Elevator</label>
+    <label><input [(ngModel)]="modelResult.ammenities[4]" type="checkbox" value="lawn" />Lawn</label>
+    <label><input [(ngModel)]="modelResult.ammenities[5]" type="checkbox" value="portch" />Portch</label>
+</div>
+-->
+<!-- probably can delete this class after presentation
+{{modelResult | json}}
 <div class="example" *ngIf = "searched">{{diagnostic}}</div>
+-->
 
-<!-- {{diagnostic}}
-{{modelResult.bType | json}}
-{{modelResult.cType | json}}
-{{modelResult.year | json}}
-{{testVar(modelResult.bType)}} -->
+<p style="margin-left: 50px;">Rooms:</p>
+<ul style="margin-left: 50px;">
+    <li *ngFor='let room of (dummyRooms | filter : modelResult.bType : modelResult.occupancy: modelResult.year : modelResult.ammenities[0]: modelResult.ammenities[1]: modelResult.ammenities[2]: modelResult.ammenities[3]: modelResult.ammenities[4]: modelResult.ammenities[5])'>
+        {{room.buildingName}} {{room.roomID | json }}
+    </li>
+</ul>

@@ -2,9 +2,9 @@ export class ResultReturn {
 
     constructor(
         public bType: string,
-        public cType: string,
+        public occupancy: number,
         public year: string,
-        public ammenities: boolean[],
+        public ammenities: string[],
     ) { }
     
 }

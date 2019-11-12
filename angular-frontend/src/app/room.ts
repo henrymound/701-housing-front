@@ -4,9 +4,14 @@ export class Room {
         public roomID: string,
         public occupancy: number,
         public sqft: number,
-        /* bType: string,
-        commons: string,
-        year: string; */
+        public bType: string,
+        public year: string,
         public description: string,
+        public checkKitchen: boolean,
+        public checkLaundry: boolean,
+        public checkCA: boolean,
+        public checkEle: boolean,
+        public checkLawn: boolean,
+        public checkPortch: boolean,
     ) { }
 }
