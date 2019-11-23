@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "singles",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "sqft",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "building_id",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
