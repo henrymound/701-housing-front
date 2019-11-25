@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Bembo';
+  src: URL('assets/Bembo.ttf') format('truetype');
+}
 
 h1 {
+<<<<<<< HEAD
   color: #256BB0;
   font-family: Helvetica, serif;
   font-size: 250%;
@@ -16,3 +21,32 @@ body {
   margin-right: 50px;
   font-family: Montserrat;
 }
+=======
+  color: #003F84;
+  font-family: Bembo, serif;
+  font-size: 350%;
+  margin-left: 50px;
+}
+
+
+h2 {
+  color: #003F84;
+  font-family: 'Bembo';
+  font-size: 277%;
+  margin-left: 50px;
+  margin-bottom: 0px;
+}
+
+h4 {
+  color: black;
+  font-family: 'Bembo';
+  font-size: 177%;
+  margin-top: 0px;
+  margin-left: 50px;
+}
+
+
+.class {
+  margin-left: 50px;
+}
+>>>>>>> 9c400de66b866be362254a94f1890bfde810fe7a
