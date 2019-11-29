@@ -5,30 +5,18 @@
 }
 
 h1 {
-  color: #003F84;
-  font-family: Bembo, serif;
-  font-size: 350%;
-  margin-left: 50px;
+  color: #256BB0;
+  font-family: Helvetica, serif;
+  font-size: 250%;
+  
 }
 
-
-h2 {
-  color: #003F84;
-  font-family: 'Bembo';
-  font-size: 277%;
-  margin-left: 50px;
-  margin-bottom: 0px;
+h3 {
+  font-family: Helvetica, serif;
 }
 
-h4 {
-  color: black;
-  font-family: 'Bembo';
-  font-size: 177%;
-  margin-top: 0px;
+body {
   margin-left: 50px;
-}
-
-
-.class {
-  margin-left: 50px;
+  margin-right: 50px;
+  font-family: Montserrat;
 }
