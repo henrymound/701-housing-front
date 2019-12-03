@@ -15,3 +15,4 @@ export class Room {
         public checkPortch: boolean,
     ) { }
 }
+

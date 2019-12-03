@@ -5,10 +5,15 @@ import { ResultReturn } from './resultReturn';
 @Pipe({
   name: 'filter'
 })
+
+
 export class FilterPipe implements PipeTransform {
   transform(dummyRooms: Room[], bInput: any, oInput: any, yInput: any, bool0: any, bool1: any, bool2: any, bool3: any, bool4: any, bool5: any): Room[] {
+    // we're parsing through any given room[] array, but are calling the array dummyRooms for continuity's sake
     if (dummyRooms && dummyRooms.length){
       return dummyRooms.filter(room =>{
+        // the structure of this filter is to check if there exists an input from a list,
+        // and then filter it out if a room object's attribute (ex. room.year) !== the dropdown.
         if (bInput && room.bType !== bInput) {
           return false;
         }

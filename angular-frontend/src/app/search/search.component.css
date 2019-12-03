@@ -47,8 +47,21 @@ form.topButton button{
     padding: 20px 10px 20px 10px;
     background: #EDEDED;
     cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .listObj:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.detailsComp {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+img.thumbnail{
+    max-height: 100px;
+    float: right;
+    margin-right: 50px;
 }
