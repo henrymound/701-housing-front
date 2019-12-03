@@ -1,6 +1,7 @@
 <form class="topButton row" action="">
     <button type="button">Search</button>
 </form>
+<!-- search button more or less cosmetic right now. will likely serve more use when linked to the back end to initiate queries-->
 
 <div class="dropDown"> 
     <label for="buildingSelect">Building Type: </label>
@@ -37,12 +38,40 @@
     <label><input [(ngModel)]="modelResult.ammenities[i]" type="checkbox" [value]="ammen.value" />{{ammen.name}}</label>
 </div>
 
+
+<!-- so pretty much what I did is I stored the values of the dropdown lists in modelResult, of class resultReturn
+then after I have a single data structure holding all values, I use the filter pipe and check all parameters.
+like all of them, even the boolean checkboxes. also, when interpolating values, adding ' {{ _______ | json}}' will give it quotes. be wary.-->
+
 <h2>Results:</h2>
 <ul class = "unorderedLi">
-    <li class="listObj" *ngFor='let room of (dummyRooms | filter : modelResult.bType : modelResult.occupancy: modelResult.year : modelResult.ammenities[0]: modelResult.ammenities[1]: modelResult.ammenities[2]: modelResult.ammenities[3]: modelResult.ammenities[4]: modelResult.ammenities[5]); let i = index' (click)="onSelect(room)">
-        <span> {{room.buildingName}} {{room.roomID | json }}</span>
+    <li class="listObj" (click)="onSelect(room)" *ngFor='let room of (dummyRooms | filter : modelResult.bType : modelResult.occupancy: modelResult.year : modelResult.ammenities[0]: modelResult.ammenities[1]: modelResult.ammenities[2]: modelResult.ammenities[3]: modelResult.ammenities[4]: modelResult.ammenities[5]); let i = index'>
+        <span> {{room.buildingName}} {{room.roomID}}</span>
         <div *ngIf='selectedRoom && selectedRoom == room'>
-            <span> sqft: {{selectedRoom.sqft | json}}. desc: {{selectedRoom.description | json}}</span>
+
+            <!-- the following images are hard-coded and css is set to float the image at the top of the card.
+            eventually remove the following 3 lines of code and add these to the room object as URLs to show them accordingly-->
+            <img *ngIf= 'selectedRoom.buildingName == "ATA" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Atwater%20A_1.jpg">
+            <img *ngIf= 'selectedRoom.buildingName == "BTC" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Battell_2.jpg">
+            <img *ngIf= 'selectedRoom.buildingName == "LGW" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Longwell.jpg">
+            
+            <p></p>
+            
+            <span class="detailsComp">
+                <u>Room Details</u>:
+                <br> desc: {{selectedRoom.description | json}}
+                <br> occupancy: {{selectedRoom.occupancy}} people
+                <br> school year: {{selectedRoom.year}}
+                <br> area: {{selectedRoom.sqft | json}} ft<sup> 2</sup>
+                <br> ammenities: 
+                <span *ngIf='selectedRoom.checkEle'>elevator, </span>
+                <span *ngIf='selectedRoom.checkKitchen'>full kitchen, </span>
+                <span *ngIf='selectedRoom.checkCA'>private common area, </span>
+                <span *ngIf='selectedRoom.checkLaundry'>in-building laundry, </span>
+                <span *ngIf='selectedRoom.checkLawn'>lawn, </span>
+                <span *ngIf='selectedRoom.checkPortch'>portch</span>
+                <!-- add a comma and space if you add more booleans-->
+            </span>
         </div>
     </li>
 </ul>
