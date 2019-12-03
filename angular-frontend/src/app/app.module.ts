@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { FilterPipe } from './filter.pipe';
 import { ViewResultComponent } from './view-result/view-result.component';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ViewResultComponent } from './view-result/view-result.component';
 
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+ 	  AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
