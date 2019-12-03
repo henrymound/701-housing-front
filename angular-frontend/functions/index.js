@@ -1,12 +1,3 @@
-const functions = require('firebase-functions');
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
 /*
     ursula alwang and marissa baker
     queries for the rooms collection made for cs 701
@@ -14,12 +5,9 @@ const functions = require('firebase-functions');
 
     Contains a function for each type of query that takes as parametera
 */
-
-
+const functions = require('firebase-functions');
 var admin = require("firebase-admin");
-
 var serviceAccount = require("../serviceAccountKey.json");
-
 const collectionKey = "rooms"; //name of the collection
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -28,10 +16,6 @@ admin.initializeApp({
 const firestore = admin.firestore();
 const settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
-
-
-
-search_by_capacity("Single")
 
 function search_by_building (building_ID) {
 

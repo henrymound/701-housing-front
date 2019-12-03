@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ResultReturn } from '../resultReturn';
 import { ROOMS, roomBools} from '../dummy-data';
 import { Room } from '../room';
+import { search_by_building } from '../searchByBuilding';
+import { search_by_capacity } from '../searchByCapacity';
 
 @Component({
   selector: 'app-search',
@@ -23,7 +25,8 @@ export class SearchComponent {
     {name: 'Lawn', value: 'lawn', checked: false},
     {name: 'Portch', value: 'portch', checked: false},
   ]
-  dummyRooms = ROOMS;
+  dummyRooms = search_by_capacity("Single");
+  dummyRooms2 = ROOMS;
   roomBools2 = roomBools;
 
   modelResult = new ResultReturn("", null, "", []);
@@ -41,7 +44,7 @@ export class SearchComponent {
   onSelect(someRoom: Room): void {
     /*if (this.selectedRoom == someRoom){this.selectedRoom = null}*/
     this.selectedRoom = someRoom;
-    
+
   }
 
 
