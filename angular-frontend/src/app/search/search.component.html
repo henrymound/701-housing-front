@@ -3,7 +3,7 @@
 </form>
 <!-- search button more or less cosmetic right now. will likely serve more use when linked to the back end to initiate queries-->
 
-<div class="dropDown"> 
+<div class="dropDown">
     <label for="buildingSelect">Building Type: </label>
     <select id="inputForm" [(ngModel)]="modelResult.bType">
         <option value="">Any Building Type</option>
@@ -28,7 +28,7 @@
 <div class="dropDown">
     <label for="yearSelect">Year: </label>
     <select id="inputForm" [(ngModel)]="modelResult.year">
-            <option value="">Any Schoolyear</option>
+            <option value="">Any Year</option>
             <option *ngFor="let schoolyear of schoolyearList" [value]="schoolyear">{{schoolyear}}</option>
     </select>
 </div>
@@ -54,16 +54,16 @@ like all of them, even the boolean checkboxes. also, when interpolating values, 
             <img *ngIf= 'selectedRoom.buildingName == "ATA" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Atwater%20A_1.jpg">
             <img *ngIf= 'selectedRoom.buildingName == "BTC" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Battell_2.jpg">
             <img *ngIf= 'selectedRoom.buildingName == "LGW" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Longwell.jpg">
-            
+
             <p></p>
-            
+
             <span class="detailsComp">
                 <u>Room Details</u>:
                 <br> desc: {{selectedRoom.description | json}}
                 <br> occupancy: {{selectedRoom.occupancy}} people
                 <br> school year: {{selectedRoom.year}}
                 <br> area: {{selectedRoom.sqft | json}} ft<sup> 2</sup>
-                <br> ammenities: 
+                <br> ammenities:
                 <span *ngIf='selectedRoom.checkEle'>elevator, </span>
                 <span *ngIf='selectedRoom.checkKitchen'>full kitchen, </span>
                 <span *ngIf='selectedRoom.checkCA'>private common area, </span>
