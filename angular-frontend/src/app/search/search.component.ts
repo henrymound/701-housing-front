@@ -103,9 +103,9 @@ export class SearchComponent implements OnInit {
    });
   }
 
-  onSelect(someBoolean: Boolean): void {
-    someBoolean = !someBoolean;
-  }
+  // onSelect(someBoolean: Boolean): void {
+  //   someBoolean = !someBoolean;
+  // }
 
   searchClickByCapacity(capacity: number) {
     console.log("Capacity "+capacity);
