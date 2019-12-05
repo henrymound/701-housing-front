@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { ResultReturn } from '../resultReturn';
 import { ROOMS, roomBools} from '../dummy-data';
 import { Room } from '../room';
-//import { search_by_building } from '../searchByBuilding';
-//import { search_by_capacity } from '../searchByCapacity';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +11,51 @@ import { Room } from '../room';
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent {
+export class SearchComponent implements OnInit {
+
+  items: Array<any>;
+  //items: Array<any>;
+  //items: Array<any>;
+
+  constructor(
+    public firebaseService: FirebaseService,
+    private router: Router
+  ) { }
+
+  ngOnInit() {
+    //this.getData();
+    this.firebaseService.getRooms().subscribe(data => {
+
+     this.items = data.map(e => {
+       return {
+         buildingName: e.payload.doc.id,
+         roomID: e.payload.doc.data()['Suite ID'],
+         occupancy: e.payload.doc.data()['Cap'],
+         sqft: e.payload.doc.data()['SqFt'],
+         bType: e.payload.doc.data()['Cap'],
+         year: e.payload.doc.data()['Cap'],
+         description: e.payload.doc.data()['Capacity'],
+         checkKitchen: true,
+         checkLaundry: true,
+         checkCA: true,
+         checkEle: true,
+         checkLawn: true,
+         checkPortch: true,
+       };
+     })
+     console.log(this.items);
+   });
+  }
+
+  getData(){
+    this.firebaseService.getRooms()
+    .subscribe(result => {
+      this.items = result;
+      //this.age_filtered_items = result;
+      //this.name_filtered_items = result;
+    })
+  }
+
 
   buildingTypeList = ["Academic Interest House", "Special Interest House", "Superblock", "Social House", "Residential Dorm"]
   commonsList = ["Wonnacott", "Brainerd", "Ross", "Atwater", "Cook"]
@@ -26,7 +69,8 @@ export class SearchComponent {
     {name: 'Portch', value: 'portch', checked: false},
   ]
   //dummyRooms = search_by_capacity("Single");
-  dummyRooms = ROOMS;
+  //dummyRooms = ROOMS;
+  dummyRooms = this.items;
   roomBools2 = roomBools;
 
   modelResult = new ResultReturn("", null, "", []);
@@ -34,6 +78,11 @@ export class SearchComponent {
   searched: Boolean = true;
   searchClick() {
     this.searched = !this.searched;
+    // this.firebaseService.getRooms().subscribe(result => {
+    //   this.items = result;
+    //   //this.age_filtered_items = result;
+    //   //this.name_filtered_items = result;
+    // })
   }
 
   /*onSelect(someBoolean: Boolean): void {

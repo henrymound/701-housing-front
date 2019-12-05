@@ -9,6 +9,9 @@ import { ViewResultComponent } from './view-result/view-result.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FirebaseService } from './services/firebase.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,14 @@ import { environment } from '../environments/environment';
 
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
- 	  AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-  ],
-  providers: [],
+    AngularFireModule.initializeApp(environment.firebase),
+ 	  AngularFirestoreModule,
+    AngularFireDatabaseModule
+    ],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
