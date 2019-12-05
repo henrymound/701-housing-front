@@ -1,4 +1,5 @@
-<form class="topButton row" action="">
+<!--search button calls searchClick() in search.component to avoid over-querying-->
+<form class="topButton row" (click)="searchClickByCapacity(modelResult.occupancy)">
     <button type="button">Search</button>
 </form>
 <!-- search button more or less cosmetic right now. will likely serve more use when linked to the back end to initiate queries-->

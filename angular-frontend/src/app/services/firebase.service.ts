@@ -38,6 +38,14 @@ export class FirebaseService {
     //  .snapshotChanges()
   }
 
+  getRoomsByCapacity(capacity){
+    //return this.db.collection('rooms').snapshotChanges();
+    return this.firestore.collection('rooms',ref => ref.where('Cap', '>=', capacity)).snapshotChanges();
+    //return this.db.collection('rooms',ref => ref.where('Cap', '>=', '0')
+    //  .where('Cap', '<=', '0' + '\uf8ff'))
+    //  .snapshotChanges()
+  }
+
   // getUsers(){
   //   return this.db.collection('users').snapshotChanges();
   // }

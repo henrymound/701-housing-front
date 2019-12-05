@@ -24,27 +24,27 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     //this.getData();
-    this.firebaseService.getRooms().subscribe(data => {
-
-     this.items = data.map(e => {
-       return {
-         buildingName: e.payload.doc.id,
-         roomID: e.payload.doc.data()['Suite ID'],
-         occupancy: e.payload.doc.data()['Cap'],
-         sqft: e.payload.doc.data()['SqFt'],
-         bType: e.payload.doc.data()['Cap'],
-         year: e.payload.doc.data()['Cap'],
-         description: e.payload.doc.data()['Capacity'],
-         checkKitchen: true,
-         checkLaundry: true,
-         checkCA: true,
-         checkEle: true,
-         checkLawn: true,
-         checkPortch: true,
-       };
-     })
-     console.log(this.items);
-   });
+   //  this.firebaseService.getRooms().subscribe(data => {
+   //
+   //   this.items = data.map(e => {
+   //     return {
+   //       buildingName: e.payload.doc.id,
+   //       roomID: e.payload.doc.data()['Suite ID'],
+   //       occupancy: e.payload.doc.data()['Cap'],
+   //       sqft: e.payload.doc.data()['SqFt'],
+   //       bType: e.payload.doc.data()['Cap'],
+   //       year: e.payload.doc.data()['Cap'],
+   //       description: e.payload.doc.data()['Capacity'],
+   //       checkKitchen: true,
+   //       checkLaundry: true,
+   //       checkCA: true,
+   //       checkEle: true,
+   //       checkLawn: true,
+   //       checkPortch: true,
+   //     };
+   //   })
+   //   console.log(this.items);
+   // });
   }
 
   getData(){
@@ -76,18 +76,63 @@ export class SearchComponent implements OnInit {
   modelResult = new ResultReturn("", null, "", []);
 
   searched: Boolean = true;
+
   searchClick() {
     this.searched = !this.searched;
-    // this.firebaseService.getRooms().subscribe(result => {
-    //   this.items = result;
-    //   //this.age_filtered_items = result;
-    //   //this.name_filtered_items = result;
-    // })
+    // Query the database and save result in 'items' array
+    this.firebaseService.getRooms().subscribe(data => {
+     this.items = data.map(e => {
+       return {
+         buildingName: e.payload.doc.id,
+         roomID: e.payload.doc.data()['Suite ID'],
+         occupancy: e.payload.doc.data()['Cap'],
+         sqft: e.payload.doc.data()['SqFt'],
+         bType: e.payload.doc.data()['Cap'],
+         year: e.payload.doc.data()['Cap'],
+         description: e.payload.doc.data()['Capacity'],
+         checkKitchen: true,
+         checkLaundry: true,
+         checkCA: true,
+         checkEle: true,
+         checkLawn: true,
+         checkPortch: true,
+       };
+     })
+     console.log("Clicked");
+     console.log(this.items);
+   });
   }
 
   /*onSelect(someBoolean: Boolean): void {
     someBoolean = !someBoolean;
   }*/
+
+  searchClickByCapacity(public capacity) {
+    console.log("Capacity "+capacity);
+
+    this.searched = !this.searched;
+    // Query the database and save result in 'items' array
+    this.firebaseService.getRoomsByCapacity(capacity).subscribe(data => {
+     this.items = data.map(e => {
+       return {
+         buildingName: e.payload.doc.id,
+         roomID: e.payload.doc.data()['Suite ID'],
+         occupancy: e.payload.doc.data()['Cap'],
+         sqft: e.payload.doc.data()['SqFt'],
+         bType: e.payload.doc.data()['Cap'],
+         year: e.payload.doc.data()['Cap'],
+         description: e.payload.doc.data()['Capacity'],
+         checkKitchen: true,
+         checkLaundry: true,
+         checkCA: true,
+         checkEle: true,
+         checkLawn: true,
+         checkPortch: true,
+       };
+     })
+     console.log(this.items);
+   });
+  }
 
   selectedRoom: Room;
   onSelect(someRoom: Room): void {
