@@ -48,16 +48,16 @@ like all of them, even the boolean checkboxes. also, when interpolating values, 
 <ul class = "unorderedLi">
         <!--<li class="listObj" (click)="onSelect(room)" *ngFor='let room of (dummyRooms | filter : modelResult.bType : modelResult.occupancy: modelResult.year : modelResult.ammenities[0]: modelResult.ammenities[1]: modelResult.ammenities[2]: modelResult.ammenities[3]: modelResult.ammenities[4]: modelResult.ammenities[5]); let i = index'>-->
         <!--<li class="listObj" (click)="onSelect(room)" *ngFor='let item of dummyRooms'>-->
-        <li class="listObj" *ngFor='let item of items'>
+        <li class="listObj" (click)="onSelect(item)" *ngFor='let item of items'>
         <span> {{item.buildingName}} {{item.roomID}} </span>
-        <!--<div *ngIf='selectedRoom && selectedRoom == room'>-->
-        <div *ngIf='true'>
+        <div *ngIf='selectedRoom == item'>
+        <!--<div *ngIf='true'>-->
             <!-- the following images are hard-coded and css is set to float the image at the top of the card.
             eventually remove the following 3 lines of code and add these to the room object as URLs to show them accordingly-->
-            <img *ngIf= 'selectedRoom.buildingName == "ATA" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Atwater%20A_1.jpg">
+            <!--<img *ngIf= 'selectedRoom.buildingName == "ATA" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Atwater%20A_1.jpg">
             <img *ngIf= 'selectedRoom.buildingName == "BTC" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Battell_2.jpg">
             <img *ngIf= 'selectedRoom.buildingName == "LGW" ' class="thumbnail" src="http://www.middlebury.edu/system/files/media/Longwell.jpg">
-
+            -->
             <p></p>
 
             <span class="detailsComp">

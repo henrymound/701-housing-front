@@ -103,25 +103,25 @@ export class SearchComponent implements OnInit {
    });
   }
 
-  /*onSelect(someBoolean: Boolean): void {
+  onSelect(someBoolean: Boolean): void {
     someBoolean = !someBoolean;
-  }*/
+  }
 
-  searchClickByCapacity(public capacity) {
+  searchClickByCapacity(capacity: number) {
     console.log("Capacity "+capacity);
 
     this.searched = !this.searched;
     // Query the database and save result in 'items' array
-    this.firebaseService.getRoomsByCapacity(capacity).subscribe(data => {
+    this.firebaseService.getRoomsByCapacity(Number(capacity)).subscribe(data => {
      this.items = data.map(e => {
        return {
-         buildingName: e.payload.doc.id,
-         roomID: e.payload.doc.data()['Suite ID'],
+         buildingName: e.payload.doc.data()['Building ID'], //e.payload.doc.id,
+         roomID: e.payload.doc.data()['Room Number'],
          occupancy: e.payload.doc.data()['Cap'],
          sqft: e.payload.doc.data()['SqFt'],
-         bType: e.payload.doc.data()['Cap'],
-         year: e.payload.doc.data()['Cap'],
-         description: e.payload.doc.data()['Capacity'],
+         bType: e.payload.doc.data()['Type'],
+         year: e.payload.doc.data()['Year'],
+         description: e.payload.doc.data()['Suite ID'],
          checkKitchen: true,
          checkLaundry: true,
          checkCA: true,
@@ -134,9 +134,10 @@ export class SearchComponent implements OnInit {
    });
   }
 
-  selectedRoom: Room;
-  onSelect(someRoom: Room): void {
+  selectedRoom: any;
+  onSelect(someRoom: any): void {
     /*if (this.selectedRoom == someRoom){this.selectedRoom = null}*/
+    console.log("Selected");
     this.selectedRoom = someRoom;
 
   }
